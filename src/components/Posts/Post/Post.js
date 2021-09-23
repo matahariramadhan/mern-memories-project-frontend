@@ -20,8 +20,6 @@ const Post = ({ post, setCurrentId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
-  console.log("Post component rendered");
-
   return (
     <Card className={classes.card}>
       <CardMedia

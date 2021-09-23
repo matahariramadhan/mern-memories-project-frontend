@@ -46,8 +46,6 @@ const Form = ({ currentId, setCurrentId }) => {
     if (post) setPostData(post);
   }, [post]);
 
-  console.log("Form component rendered");
-
   return (
     <Paper className={classes.paper}>
       <form
