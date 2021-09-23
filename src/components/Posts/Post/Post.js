@@ -20,6 +20,8 @@ const Post = ({ post, setCurrentId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
 
+  console.log("Post component rendered");
+
   return (
     <Card className={classes.card}>
       <CardMedia
@@ -39,7 +41,7 @@ const Post = ({ post, setCurrentId }) => {
           size="small"
           onClick={() => setCurrentId(post._id)}
         >
-          <MoreHorizonIcon fontSize="default" />
+          <MoreHorizonIcon fontSize="medium" />
         </Button>
       </div>
       <div className={classes.details}>

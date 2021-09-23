@@ -18,6 +18,8 @@ const App = () => {
     dispatch(getPosts());
   }, [dispatch]);
 
+  console.log("App Component Render");
+
   return (
     <Container maxWidth="lg">
       <AppBar className={classes.appBar} position="static" color="inherit">
@@ -38,7 +40,7 @@ const App = () => {
             className={classes.mainContainer}
             justifyContent="space-between"
             alignItems="stretch"
-            spacing="3"
+            spacing={3}
           >
             <Grid item xs={12} sm={7}>
               <Posts setCurrentId={setCurrentId} />
