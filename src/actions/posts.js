@@ -1,4 +1,4 @@
-import { CREATE, DELETE, FETCH_ALL, LIKE, UPDATE } from "./constants";
+import { CREATE, DELETE, FETCH_ALL, LIKE, SIGNIN, UPDATE } from "./constants";
 import * as api from "../api/index.js";
 
 export const getPosts = () => async (dispatch) => {
@@ -49,6 +49,7 @@ export const likePost = (id) => async (dispatch) => {
     console.log(error);
   }
 };
+
 // export const createPost = (postData) => {
 //   return { type: CREATE, payload: postData };
 // };

@@ -6,3 +6,4 @@ export const LIKE = "LIKE";
 
 export const AUTH = "AUTH";
 export const SIGNOUT = "SIGNOUT";
+export const SIGNIN = "SIGNIN";

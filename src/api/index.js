@@ -1,11 +1,14 @@
 import axios from "axios";
 
-// const url = "https://matahari-memories-app.herokuapp.com/posts";
-const url = "http://localhost:5000/posts";
+const API = axios.create({ baseURL: "http://localhost:5000" });
+// const API = axios.create({ baseURL: "https://matahari-memories-app.herokuapp.com" });
 
-export const fetchPostsApi = () => axios.get(url);
-export const createPostApi = (newPost) => axios.post(url, newPost);
+export const fetchPostsApi = () => API.get("/posts");
+export const createPostApi = (newPost) => API.post("/posts", newPost);
 export const updatePostApi = (id, updatedPost) =>
-  axios.patch(`${url}/${id}`, updatedPost);
-export const deletePostApi = (id) => axios.delete(`${url}/${id}`);
-export const likePostApi = (id) => axios.patch(`${url}/${id}/likePost`);
+  API.patch(`/posts/${id}`, updatedPost);
+export const deletePostApi = (id) => API.delete(`/posts/${id}`);
+export const likePostApi = (id) => API.patch(`/posts/${id}/likePost`);
+
+export const signInApi = (FormData) => API.post("/user/signin", FormData);
+export const signUpApi = (FormData) => API.post("/user/signup", FormData);

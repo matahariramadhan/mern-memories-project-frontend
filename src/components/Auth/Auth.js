@@ -16,17 +16,37 @@ import Icon from "./icon";
 import useStyles from "./styles";
 import { AUTH } from "../../actions/constants";
 import { useHistory } from "react-router";
+import { signin, signup } from "../../actions/auth";
+
+const initialState = {
+  firstName: "",
+  lastName: "",
+  email: "",
+  password: "",
+  confirmPassword: "",
+};
 
 const Auth = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const classes = useStyles();
   const [showPassword, setShowPassword] = useState(false);
-  const [isSignUp, setIsSignUp] = useState(true);
+  const [isSignUp, setIsSignUp] = useState(false);
+  const [formData, setFormData] = useState(initialState);
 
-  const handleSubmit = () => {};
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-  const handleChange = () => {};
+    if (isSignUp) {
+      dispatch(signup(formData, history));
+    } else {
+      dispatch(signin(formData, history));
+    }
+  };
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   const handleShowPassword = () =>
     setShowPassword((prevShowPassword) => !prevShowPassword);
@@ -34,11 +54,12 @@ const Auth = () => {
   const switchMode = () => setIsSignUp((prevIsSignUp) => !prevIsSignUp);
 
   const googleSuccess = (res) => {
+    console.log("google success", res);
     const result = res?.profileObj;
     const token = res?.tokenId;
 
     try {
-      dispatch({ type: AUTH, data: { result, token } });
+      dispatch({ type: AUTH, payload: { result, token } });
       history.push("/");
     } catch (error) {
       console.log(error);
