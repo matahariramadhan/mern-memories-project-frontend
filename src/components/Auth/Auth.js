@@ -54,7 +54,6 @@ const Auth = () => {
   const switchMode = () => setIsSignUp((prevIsSignUp) => !prevIsSignUp);
 
   const googleSuccess = (res) => {
-    console.log("google success", res);
     const result = res?.profileObj;
     const token = res?.tokenId;
 
