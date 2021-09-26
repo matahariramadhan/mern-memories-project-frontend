@@ -23,10 +23,6 @@ const Post = ({ post, setCurrentId }) => {
 
   const user = JSON.parse(localStorage.getItem("profile"));
 
-  console.log(
-    user?.result?.googleId === user?.name || user?.result?._id === user?.name
-  );
-
   const Likes = () => {
     if (post.likes.length > 0) {
       return post.likes.find(
